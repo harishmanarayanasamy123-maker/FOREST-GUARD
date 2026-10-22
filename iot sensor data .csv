@@ -1,0 +1,28 @@
+pip install pandas matplotlib
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read your actual sensor data
+df = pd.read_csv("iot_sensor_data.csv")
+
+print("First 5 sensor readings:")
+print(df.head())
+
+print("\nDataset information:")
+print(df.describe())
+
+# Plot temperature readings
+plt.figure(figsize=(10, 5))
+plt.plot(df["temp_c"], marker="o")
+plt.title("Forest Monitoring - Temperature")
+plt.xlabel("Reading number")
+plt.ylabel("Temperature (°C)")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+# Basic warning flag for investigation only
+df["temperature_warning"] = df["temp_c"] >= 40
+
+print("\nTemperature warning records:")
+print(df[df["temperature_warning"]])
