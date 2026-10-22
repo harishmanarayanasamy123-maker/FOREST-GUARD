@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "author": "ForestGuard",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic",
+      "top": -120,
+      "left": 300,
+      "attrs": {
+        "distance": "250"
+      }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir",
+      "top": 40,
+      "left": 300,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht",
+      "top": 180,
+      "left": 300,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": 300,
+      "left": 300,
+      "attrs": {
+        "pins": "i2c"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 450,
+      "left": 300,
+      "attrs": {
+        "volume": "0.5"
+      }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay",
+      "top": 550,
+      "left": 300,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    ["esp:5", "ultrasonic:TRIG", "green", []],
+    ["esp:18", "ultrasonic:ECHO", "blue", []],
+    ["esp:VIN", "ultrasonic:VCC", "red", []],
+    ["esp:GND.1", "ultrasonic:GND", "black", []],
+
+    ["esp:19", "pir:OUT", "orange", []],
+    ["esp:VIN", "pir:VCC", "red", []],
+    ["esp:GND.1", "pir:GND", "black", []],
+
+    ["esp:4", "dht:SDA", "green", []],
+    ["esp:3V3", "dht:VCC", "red", []],
+    ["esp:GND.1", "dht:GND", "black", []],
+
+    ["esp:21", "lcd:SDA", "green", []],
+    ["esp:22", "lcd:SCL", "blue", []],
+    ["esp:VIN", "lcd:VCC", "red", []],
+    ["esp:GND.1", "lcd:GND", "black", []],
+
+    ["esp:23", "buzzer:2", "purple", []],
+    ["esp:GND.2", "buzzer:1", "black", []],
+
+    ["esp:25", "relay:IN", "orange", []],
+    ["esp:VIN", "relay:VCC", "red", []],
+    ["esp:GND.2", "relay:GND", "black", []]
+  ],
+  "dependencies": {}
+}
